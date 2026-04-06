@@ -1,0 +1,253 @@
+/* ===========================
+   Base Styles & Reset
+   =========================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* Translucent glow effects on top of everything */
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(212, 168, 67, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(100, 80, 160, 0.12) 0%, transparent 50%);
+  pointer-events: none; /* Let clicks pass to the board/content */
+}
+/* Ensure base interactive elements work, without overriding phase visibility blocks */
+#sound-toggle, #board-wrapper, #nav-strip {
+  pointer-events: auto; 
+}
+
+/* Dedicated Fixed Background Layer (Primary Image - Backing Only) */
+.fixed-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1; /* Almost entirely backing */
+  filter: grayscale(1) brightness(0.2);
+  z-index: -4;
+  pointer-events: none;
+}
+
+/* Cinematic Background Decoration Layer */
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+  /* Deep Midnight Onyx Mesh Gradient */
+  background: 
+    radial-gradient(ellipse at 80% 20%, rgba(31, 31, 64, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(58, 58, 128, 0.15) 0%, transparent 50%),
+    var(--bg-deep);
+}
+
+/* 1. Large-scale Blueprint Grid */
+.bg-grid {
+  position: absolute;
+  inset: -100px;
+  background-image: 
+    linear-gradient(rgba(212, 168, 67, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 67, 0.15) 1px, transparent 1px);
+  background-size: 100px 100px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 90%);
+  z-index: 1;
+}
+
+/* 2. Ghost Chess Pieces (Silhouettes) */
+.bg-piece {
+  position: absolute;
+  font-size: 40rem;
+  font-family: serif;
+  color: var(--gold);
+  opacity: 0.1; /* Significantly increased for visibility */
+  line-height: 1;
+  filter: blur(4px);
+  user-select: none;
+  animation: drift-ghost 60s ease-in-out infinite both;
+  z-index: 2;
+}
+.k-ghost { top: -10%; right: -5%; transform: rotate(15deg); animation-delay: -5s; }
+.n-ghost { bottom: -5%; left: -10%; transform: rotate(-15deg); font-size: 30rem; animation-delay: -25s; }
+
+/* 3. Floating Move Notations */
+.bg-moves {
+  position: absolute;
+  width: 200%;
+  bottom: 10%;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 10rem;
+  color: var(--gold);
+  opacity: 0.04;
+  white-space: nowrap;
+  letter-spacing: 1.5rem;
+  text-transform: uppercase;
+  animation: drift-bg 120s linear infinite;
+  z-index: 2;
+}
+
+/* 4. Ambient Focal Glow (Centered on board area) */
+.bg-glow {
+  position: absolute;
+  width: 140vw;
+  height: 140vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(80, 80, 180, 0.2) 0%, transparent 70%);
+  z-index: 0;
+}
+
+/* 5. Particle Dust System */
+.bg-dust {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+.dust-mote {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.4;
+  filter: blur(1px);
+  animation: dust-drift 40s linear infinite;
+}
+
+/* 6. Volumetric Fog & Light Rays */
+.bg-fog {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(31, 31, 64, 0.15) 60%, rgba(15, 15, 30, 0.3) 100%);
+  opacity: 0.8;
+  mix-blend-mode: color-dodge;
+  animation: fog-breathe 25s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.bg-light-rays {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(212, 168, 67, 0.03) 45%, transparent 50%, rgba(212, 168, 67, 0.03) 55%, transparent 60%);
+  opacity: 0.6;
+  filter: blur(30px);
+  z-index: 2;
+  animation: rays-drift 60s ease-in-out infinite alternate;
+}
+
+/* Selection */
+
+/* Selection */
+::selection {
+  background: var(--gold);
+  color: var(--bg-deep);
+}
+
+/* Scrollbar hidden globally */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Links */
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--gold-bright);
+}
+
+/* Sound Toggle */
+.sound-toggle {
+  position: fixed;
+  top: var(--sp-lg);
+  left: var(--sp-lg);
+  z-index: var(--z-sound);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: var(--border-subtle);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+.sound-toggle:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.1);
+}
+.sound-icon { display: none; }
+.sound-toggle .sound-off { display: inline; }
+.sound-toggle.active .sound-off { display: none; }
+.sound-toggle.active .sound-on { display: inline; }
+
+/* Phase Content Containers */
+.phase-content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-content) var(--ease-smooth);
+  z-index: var(--z-content);
+}
+
+.phase-content.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Move Notation Flash */
+.move-notation {
+  position: absolute;
+  top: var(--sp-xl);
+  right: 80px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  opacity: 0;
+  letter-spacing: 0.5px;
+  z-index: var(--z-overlay);
+  transition: opacity 0.6s ease;
+}
+.move-notation.visible {
+  opacity: 1;
+}
