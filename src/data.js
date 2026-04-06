@@ -3,16 +3,18 @@
    =========================== */
 
 export const personalData = {
-  name: 'Yash Redkar',
-  tagline: 'Full-Stack Developer building scalable systems and production-ready applications.',
-  flag: '🇮🇳',
-  location: 'Mumbai, India',
+  name: "Yash Redkar",
+  tagline:
+    "Full-Stack Developer building scalable systems and production-ready applications.",
+  flag: "🇮🇳",
+  location: "Mumbai, India",
   rating: null,
   activeSince: 2024,
 
   bio: `I build real-world applications and scalable systems, not just interfaces. My focus is on clean architecture, efficient backend design, and delivering products that solve practical problems. I enjoy working across the full stack — from intuitive user experiences to reliable APIs and systems.`,
 
-  philosophy: 'I focus on building systems that are scalable, maintainable, and solve real-world problems.',
+  philosophy:
+    "I focus on building systems that are scalable, maintainable, and solve real-world problems.",
 };
 
 /* ===========================
@@ -21,45 +23,45 @@ export const personalData = {
 
 export const skills = [
   {
-    line: 'Core Stack',
+    line: "Core Stack",
     items: [
-      { name: 'React', depth: 'solid' },
-      { name: 'Next.js', depth: 'solid' },
-      { name: 'JavaScript', depth: 'deep' },
-      { name: 'TypeScript', depth: 'solid' },
+      { name: "React", depth: "solid" },
+      { name: "Next.js", depth: "solid" },
+      { name: "JavaScript", depth: "deep" },
+      { name: "TypeScript", depth: "solid" },
     ],
   },
   {
-    line: 'Backend & APIs',
+    line: "Backend & APIs",
     items: [
-      { name: 'Node.js', depth: 'deep' },
-      { name: 'Express.js', depth: 'deep' },
-      { name: 'REST APIs', depth: 'deep' },
-      { name: 'Authentication & Authorization', depth: 'solid' },
+      { name: "Node.js", depth: "deep" },
+      { name: "Express.js", depth: "deep" },
+      { name: "REST APIs", depth: "deep" },
+      { name: "Authentication & Authorization", depth: "solid" },
     ],
   },
   {
-    line: 'Databases',
+    line: "Databases",
     items: [
-      { name: 'MongoDB', depth: 'solid' },
-      { name: 'SQL', depth: 'solid' },
-      { name: 'DBMS Concepts', depth: 'solid' },
+      { name: "MongoDB", depth: "solid" },
+      { name: "SQL", depth: "solid" },
+      { name: "DBMS Concepts", depth: "solid" },
     ],
   },
   {
-  line: 'Languages',
-  items: [
-    { name: 'Java', depth: 'solid' },
-    { name: 'C', depth: 'solid' },
-    { name: 'Python', depth: 'solid' },
+    line: "Languages",
+    items: [
+      { name: "Java", depth: "solid" },
+      { name: "C", depth: "solid" },
+      { name: "Python", depth: "solid" },
     ],
   },
   {
-    line: 'Currently Improving',
+    line: "Currently Improving",
     items: [
-      { name: 'DSA', depth: 'solid' },
-      { name: 'System Design', depth: 'studying' },
-      { name: 'AI/ML Fundamentals', depth: 'studying' },
+      { name: "DSA", depth: "solid" },
+      { name: "System Design", depth: "studying" },
+      { name: "AI/ML Fundamentals", depth: "studying" },
     ],
   },
 ];
@@ -111,43 +113,70 @@ export const experience = [
   {
     round: 1,
     total: 3,
-    period: 'Virtual Experience',
-    company: 'Deloitte',
-    title: 'Technology Virtual Experience Participant',
-    venue: 'Forage Program · March 2026',
+    period: "Virtual Experience",
+    company: "Deloitte",
+    title: "Technology Virtual Experience Participant",
+    venue: "Forage Program · March 2026",
     barFill: 65,
     annotations: [
-      { symbol: '!!', text: 'Completed Deloitte Technology Virtual Experience Program with hands-on development and coding tasks' },
-      { symbol: '!', text: 'Worked on practical engineering tasks focused on coding and development workflows' },
-      { symbol: '!', text: 'Gained exposure to real-world problem solving and industry-level software development practices' },
+      {
+        symbol: "!!",
+        text: "Completed Deloitte Technology Virtual Experience Program with hands-on development and coding tasks",
+      },
+      {
+        symbol: "!",
+        text: "Worked on practical engineering tasks focused on coding and development workflows",
+      },
+      {
+        symbol: "!",
+        text: "Gained exposure to real-world problem solving and industry-level software development practices",
+      },
     ],
   },
   {
     round: 2,
     total: 3,
-    period: 'Hackathon Experience',
-    company: 'Smart India Hackathon (SIH)',
-    title: 'Participant',
-    venue: 'Team Collaboration · Project Development',
+    period: "Hackathon Experience",
+    company: "Smart India Hackathon (SIH)",
+    title: "Participant",
+    venue: "Team Collaboration · Project Development",
     barFill: 75,
     annotations: [
-      { symbol: '!!', text: 'Built Monastery360 as part of SIH Hackathon, focusing on tourism platform design and user experience' },
-      { symbol: '!', text: 'Worked on project ideation, structuring, and implementation under time constraints' },
-      { symbol: '!', text: 'Improved teamwork, communication, and practical problem-solving skills through hackathon experience' },
+      {
+        symbol: "!!",
+        text: "Built Monastery360 as part of SIH Hackathon, focusing on tourism platform design and user experience",
+      },
+      {
+        symbol: "!",
+        text: "Worked on project ideation, structuring, and implementation under time constraints",
+      },
+      {
+        symbol: "!",
+        text: "Improved teamwork, communication, and practical problem-solving skills through hackathon experience",
+      },
     ],
   },
   {
     round: 3,
     total: 3,
-    period: 'Project Experience',
-    company: 'Personal Projects',
-    title: 'Full-Stack Developer',
-    venue: 'Projects · Portfolio · Practice',
+    period: "Project Experience",
+    company: "Personal Projects",
+    title: "Full-Stack Developer",
+    venue: "Projects · Portfolio · Practice",
     barFill: 90,
     annotations: [
-      { symbol: '!!', text: 'Built TeamForge, a full-stack SaaS platform with multi-workspace architecture and role-based access control' },
-      { symbol: '!', text: 'Developed APIs, authentication systems, database schemas, and interactive frontend interfaces' },
-      { symbol: '!', text: 'Built projects including Winner Predictor, Monastery360, and Car Rental System to strengthen real-world development skills' },
+      {
+        symbol: "!!",
+        text: "Built TeamForge, a full-stack SaaS platform with multi-workspace architecture and role-based access control",
+      },
+      {
+        symbol: "!",
+        text: "Developed APIs, authentication systems, database schemas, and interactive frontend interfaces",
+      },
+      {
+        symbol: "!",
+        text: "Built projects including Winner Predictor, Monastery360, and Car Rental System to strengthen real-world development skills",
+      },
     ],
   },
 ];
@@ -157,29 +186,29 @@ export const experience = [
    =========================== */
 
 export const contactLinks = [
-  { 
-    icon: '📧', 
-    label: 'Email', 
-    response: 'Send Message', 
-    url: 'mailto:redkar19yash@gmail.com' 
+  {
+    icon: "📧",
+    label: "Email",
+    response: "Send Message",
+    url: "https://mail.google.com/mail/?view=cm&fs=1&to=redkar19yash%40gmail.com&su=Portfolio%20Inquiry",
   },
-  { 
-    icon: '💼', 
-    label: 'LinkedIn', 
-    response: 'View Profile', 
-    url: 'https://www.linkedin.com/in/yash-redkar-248392388' 
+  {
+    icon: "💼",
+    label: "LinkedIn",
+    response: "View Profile",
+    url: "https://www.linkedin.com/in/yash-redkar-248392388",
   },
-  { 
-    icon: '🐙', 
-    label: 'GitHub', 
-    response: 'Explore Work', 
-    url: 'https://github.com/yash-redkar' 
+  {
+    icon: "🐙",
+    label: "GitHub",
+    response: "Explore Work",
+    url: "https://github.com/yash-redkar",
   },
-  { 
-    icon: '📄', 
-    label: 'Resume', 
-    response: 'Download CV', 
-    url: '/resume.pdf' 
+  {
+    icon: "📄",
+    label: "Resume",
+    response: "Download CV",
+    url: "/resume.pdf",
   },
 ];
 
@@ -194,10 +223,10 @@ export const heatmapData = (() => {
     const weekDate = new Date(now);
     weekDate.setDate(weekDate.getDate() - i * 7);
     data.push({
-      week: weekDate.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
+      week: weekDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
       }),
       contributions: Math.floor(Math.random() * 35) + (i < 10 ? 15 : 3),
     });
