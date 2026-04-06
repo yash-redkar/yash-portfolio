@@ -76,7 +76,7 @@ export const projects = [
     difficulty: 5,
     desc: "A full-stack SaaS project management platform designed for real-world team collaboration. Features include multi-workspace architecture, role-based access control, task hierarchies, activity tracking, notifications, and real-time updates using Socket.IO.",
     stack: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB"],
-    liveUrl: "https://team-forge-nine.vercel.app/",
+    liveUrl: "https://getteamforge.vercel.app/",
     repoUrl: "https://github.com/yash-redkar/TeamForge",
   },
   {
