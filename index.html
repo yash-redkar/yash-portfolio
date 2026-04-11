@@ -25,7 +25,6 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   </head>
   <body>
-    <!-- Fixed background layer -->
     <img
       src="/steel-chessboard-bg.png"
       class="fixed-bg"
@@ -33,15 +32,12 @@
       aria-hidden="true"
     />
 
-    <!-- Cinematic Background Decoration Layer -->
     <div class="bg-decor" aria-hidden="true">
       <div class="bg-grid"></div>
 
-      <!-- Parallax Silhouettes -->
       <div class="bg-piece k-ghost parallax" data-depth="0.05">♚</div>
       <div class="bg-piece n-ghost parallax" data-depth="0.1">♞</div>
 
-      <!-- Particle Dust System -->
       <div class="bg-dust">
         <div
           class="dust-mote"
@@ -65,7 +61,6 @@
         ></div>
       </div>
 
-      <!-- Volumetric Fog -->
       <div class="bg-fog"></div>
 
       <div class="bg-moves">e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6</div>
@@ -73,9 +68,7 @@
       <div class="bg-light-rays"></div>
     </div>
 
-    <!-- Full viewport canvas -->
     <div id="app">
-      <!-- Sound toggle -->
       <button
         id="sound-toggle"
         class="sound-toggle"
@@ -86,12 +79,10 @@
         <span class="sound-icon sound-on">🔊</span>
       </button>
 
-      <!-- Chess Board -->
       <div id="board-wrapper" class="board-wrapper">
         <div id="board" class="board"></div>
       </div>
 
-      <!-- Phase 0: Pre-Game — Hero -->
       <div id="phase-0" class="phase-content phase-0 active">
         <div class="hero-overlay">
           <h1 class="hero-name">
@@ -116,12 +107,10 @@
         </div>
       </div>
 
-      <!-- Phase 1: Opening — Skills & About -->
       <div id="phase-1" class="phase-content phase-1">
         <div class="move-notation" id="notation-1"></div>
         <div class="panel-outer right-outer">
           <div class="content-panel right-panel" id="panel-phase-1">
-            <!-- Player Card (About) -->
             <div class="card player-card">
               <div class="card-header">
                 <div class="player-avatar" id="player-avatar">♚</div>
@@ -142,7 +131,6 @@
               </p>
             </div>
 
-            <!-- Repertoire Card (Skills) -->
             <div class="card repertoire-card">
               <h3 class="card-title">Skills</h3>
               <p class="card-subtitle">Core Technologies</p>
@@ -152,7 +140,6 @@
         </div>
       </div>
 
-      <!-- Phase 2: Middlegame — Projects & Experience -->
       <div id="phase-2" class="phase-content phase-2">
         <div class="move-notation" id="notation-2"></div>
         <div class="panel-outer left-outer">
@@ -164,12 +151,10 @@
               <button class="tab-btn" data-tab="experience">Experience</button>
             </div>
 
-            <!-- Projects Tab -->
             <div id="tab-projects" class="tab-content active">
               <div id="projects-grid" class="projects-grid"></div>
             </div>
 
-            <!-- Experience Tab -->
             <div id="tab-experience" class="tab-content">
               <div id="experience-log" class="experience-log"></div>
             </div>
@@ -177,11 +162,9 @@
         </div>
       </div>
 
-      <!-- Phase 3: Endgame — Contact -->
       <div id="phase-3" class="phase-content phase-3">
         <div class="move-notation" id="notation-3"></div>
         <div class="endgame-layout">
-          <!-- Left: Contact Summary -->
           <div class="scoresheet-panel">
             <div class="card scoresheet-card">
               <h3 class="scoresheet-title">CONTACT</h3>
@@ -197,10 +180,8 @@
             </div>
           </div>
 
-          <!-- Center: Board becomes heatmap -->
           <div class="heatmap-overlay" id="heatmap-overlay"></div>
 
-          <!-- Right: Contact Form -->
           <div class="contact-panel">
             <div class="card contact-card">
               <h3 class="contact-title">Get In Touch</h3>
@@ -245,8 +226,6 @@
         </div>
       </div>
 
-      <!-- ================= EMAILJS SCRIPT ================= -->
-
       <script>
         const PUBLIC_KEY = "GV2boXT7KYQYpBC18";
         const SERVICE_ID = "service_6ye0emh";
@@ -270,9 +249,8 @@
             .then(() => {
               form.reset();
               submitBtn.classList.add("success");
-              btnText.innerText = "Start Conversation"; // Reset text behind the scenes
+              btnText.innerText = "Start Conversation";
 
-              // Revert back after 3 seconds
               setTimeout(() => {
                 submitBtn.classList.remove("success");
               }, 3000);
@@ -281,7 +259,6 @@
               console.error(error);
               btnText.innerText = "Send Failed ❌";
 
-              // Revert text on error after 3 seconds
               setTimeout(() => {
                 btnText.innerText = "Start Conversation";
               }, 3000);
@@ -289,7 +266,6 @@
         });
       </script>
 
-      <!-- Phase 4: Final Move — Closing Section -->
       <div id="phase-4" class="phase-content phase-4">
         <div class="move-notation" id="notation-4"></div>
         <div class="gameover-layout">
@@ -372,7 +348,7 @@
           </div>
         </div>
       </div>
-      <!-- Navigation Strip -->
+
       <nav id="nav-strip" class="nav-strip" aria-label="Phase navigation">
         <div class="nav-node active" data-phase="0">
           <div class="nav-dot"></div>

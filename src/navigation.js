@@ -1,12 +1,8 @@
-/* ===========================
-   Navigation Strip Controller
-   =========================== */
+
 
 let navNodes = [];
 
-/**
- * Initialize navigation
- */
+
 export function initNavigation(onPhaseClick) {
   navNodes = document.querySelectorAll('.nav-node');
 
@@ -20,9 +16,7 @@ export function initNavigation(onPhaseClick) {
   });
 }
 
-/**
- * Update the navigation to reflect current phase
- */
+
 export function updateNavigation(currentPhase) {
   navNodes.forEach(node => {
     const phase = parseInt(node.dataset.phase, 10);

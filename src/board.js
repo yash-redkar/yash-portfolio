@@ -5,13 +5,13 @@ const RANKS = ['8', '7', '6', '5', '4', '3', '2', '1'];
 
 let boardEl = null;
 let squares = {};
-let pieceElements = []; // { el, piece, square, color, id }
+let pieceElements = []; 
 
 function squareToCoords(sq) {
   return { col: FILES.indexOf(sq[0]), row: RANKS.indexOf(sq[1]) };
 }
 
-/** Create the 8x8 board grid */
+
 export function renderBoard() {
   boardEl = document.getElementById('board');
   boardEl.innerHTML = '';
@@ -30,7 +30,7 @@ export function renderBoard() {
   }
 }
 
-/** Set position instantly (no animation) — used for initial load and backward nav */
+
 export function setPosition(positionData) {
   pieceElements.forEach(p => p.el.remove());
   pieceElements = [];
@@ -55,24 +55,16 @@ function _createPiece(piece, square, color, id) {
   return entry;
 }
 
-/* ===========================
-   Move-by-Move Fast-Forward Animation
-   Plays each move sequentially — one piece slides at a time
-   =========================== */
 
-/**
- * Play a sequence of moves with fast-forward scrub effect
- * @param {Array} moves - array of move data from chess engine
- * @param {number} msPerMove - milliseconds per move (lower = faster)
- * @returns {Promise}
- */
+
+
 export async function playMoveSequence(moves, msPerMove = 100) {
   boardEl.classList.add('pieces-sliding');
   for (let i = 0; i < moves.length; i++) {
     await _animateSingleMove(moves[i], msPerMove);
   }
   boardEl.classList.remove('pieces-sliding');
-  // Clean up transitions
+  
   pieceElements.forEach(pe => { pe.el.style.transition = ''; });
 }
 
@@ -80,7 +72,7 @@ async function _animateSingleMove(move, duration) {
   return new Promise(resolve => {
     const slideDur = Math.max(duration * 0.8, 40);
 
-    // 1. Handle capture — fade out captured piece
+    
     if (move.capturedSquare) {
       const capIdx = pieceElements.findIndex(pe => pe.square === move.capturedSquare);
       if (capIdx >= 0) {
@@ -93,7 +85,7 @@ async function _animateSingleMove(move, duration) {
       }
     }
 
-    // 2. Slide the main piece
+    
     const entry = pieceElements.find(pe => pe.square === move.from);
     if (entry) {
       const to = squareToCoords(move.to);
@@ -103,14 +95,14 @@ async function _animateSingleMove(move, duration) {
       entry.el.style.top = `${to.row * 12.5}%`;
       entry.square = move.to;
 
-      // Promotion — change the piece character
+      
       if (move.promotion) {
         setTimeout(() => {
           entry.piece = move.promotion.char;
           entry.el.textContent = move.promotion.char;
         }, slideDur * 0.7);
       }
-      // Sound
+      
       if (move.capturedSquare) {
         playCaptureSound();
       } else {
@@ -118,7 +110,7 @@ async function _animateSingleMove(move, duration) {
       }
     }
 
-    // 3. Castle — also slide the rook
+    
     if (move.castleRookFrom && move.castleRookTo) {
       const rook = pieceElements.find(pe => pe.square === move.castleRookFrom);
       if (rook) {
@@ -131,7 +123,7 @@ async function _animateSingleMove(move, duration) {
       }
     }
 
-    // 4. Resolve after animation completes
+    
     setTimeout(() => {
       if (entry) {
         entry.el.classList.remove('sliding');
@@ -142,17 +134,9 @@ async function _animateSingleMove(move, duration) {
   });
 }
 
-/* ===========================
-   Move-by-Move REVERSE Animation (Rewind)
-   Plays moves backward — pieces slide back, captures are restored
-   =========================== */
 
-/**
- * Play a sequence of moves in REVERSE with rewind scrub effect
- * @param {Array} moves - array of move data (will be iterated backward)
- * @param {number} msPerMove - milliseconds per move (lower = faster)
- * @returns {Promise}
- */
+
+
 export async function playMoveSequenceReverse(moves, msPerMove = 100) {
   boardEl.classList.add('pieces-sliding');
   for (let i = moves.length - 1; i >= 0; i--) {
@@ -166,12 +150,12 @@ async function _animateSingleMoveReverse(move, duration) {
   return new Promise(resolve => {
     const slideDur = Math.max(duration * 0.8, 40);
 
-    // 1. Slide the piece BACK from move.to to move.from
+    
     const entry = pieceElements.find(pe => pe.square === move.to);
     if (entry) {
-      // If it was a promotion, revert to pawn
+      
       if (move.promotion) {
-        entry.piece = move.pieceChar; // pieceChar is the original pawn unicode
+        entry.piece = move.pieceChar; 
         entry.el.textContent = move.pieceChar;
       }
 
@@ -183,7 +167,7 @@ async function _animateSingleMoveReverse(move, duration) {
       entry.square = move.from;
     }
 
-    // 2. If castling, also slide the rook back
+    
     if (move.castleRookFrom && move.castleRookTo) {
       const rook = pieceElements.find(pe => pe.square === move.castleRookTo);
       if (rook) {
@@ -196,7 +180,7 @@ async function _animateSingleMoveReverse(move, duration) {
       }
     }
 
-    // 3. If there was a capture, recreate the captured piece (fade in)
+    
     if (move.capturedSquare && move.capturedChar) {
       setTimeout(() => {
         const restored = _createPiece(
@@ -215,14 +199,14 @@ async function _animateSingleMoveReverse(move, duration) {
       }, slideDur * 0.2);
     }
 
-    // Sound (Reverse)
+    
     if (move.capturedSquare) {
       playCaptureSound();
     } else {
       playMoveSound();
     }
 
-    // 4. Resolve after animation completes
+    
     setTimeout(() => {
       if (entry) {
         entry.el.classList.remove('sliding');
@@ -233,9 +217,7 @@ async function _animateSingleMoveReverse(move, duration) {
   });
 }
 
-/* ===========================
-   Board Appearance Controls
-   =========================== */
+
 export function setTilt(phase) {
   if (!boardEl) return;
   boardEl.classList.remove('tilt-0', 'tilt-1', 'tilt-2', 'tilt-3');

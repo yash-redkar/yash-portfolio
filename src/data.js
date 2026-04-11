@@ -1,6 +1,4 @@
-/* ===========================
-   Portfolio Data (Final Version)
-   =========================== */
+
 
 export const personalData = {
   name: "Yash Redkar",
@@ -17,9 +15,7 @@ export const personalData = {
     "I focus on building systems that are scalable, maintainable, and solve real-world problems.",
 };
 
-/* ===========================
-   Skills
-   =========================== */
+
 
 export const skills = [
   {
@@ -66,9 +62,7 @@ export const skills = [
   },
 ];
 
-/* ===========================
-   Projects
-   =========================== */
+
 
 export const projects = [
   {
@@ -105,9 +99,6 @@ export const projects = [
   },
 ];
 
-/* ===========================
-   Experience
-   =========================== */
 
 export const experience = [
   {
@@ -181,9 +172,7 @@ export const experience = [
   },
 ];
 
-/* ===========================
-   Contact Links
-   =========================== */
+
 
 export const contactLinks = [
   {
@@ -212,9 +201,7 @@ export const contactLinks = [
   },
 ];
 
-/* ===========================
-   Heatmap (unchanged)
-   =========================== */
+
 
 export const heatmapData = (() => {
   const data = [];

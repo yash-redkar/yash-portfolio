@@ -1,13 +1,8 @@
-/* ===========================
-   Content Renderer
-   Populates all dynamic content into the DOM
-   =========================== */
+
 
 import { personalData, skills, projects, experience, contactLinks, heatmapData } from './data.js';
 
-/**
- * Initialize all content across all phases
- */
+
 export function initContent() {
   renderPhase0();
   renderPhase1();
@@ -19,9 +14,9 @@ export function initContent() {
   observePhaseActivation();
 }
 
-/* ---------- Phase 0: Hero ---------- */
+
 function renderPhase0() {
-  // Content is mostly in HTML; just set up the scroll hint timer
+  
   setTimeout(() => {
     const hint = document.getElementById('scroll-hint');
     if (hint && hint.classList.contains('hidden')) {
@@ -31,13 +26,13 @@ function renderPhase0() {
   }, 2500);
 }
 
-/* ---------- Phase 1: About & Skills ---------- */
+
 function renderPhase1() {
-  // Bio
+  
   const bioEl = document.getElementById('player-bio');
   if (bioEl) bioEl.textContent = personalData.bio;
 
-  // Skills
+  
   const container = document.getElementById('skills-container');
   if (!container) return;
 
@@ -79,7 +74,7 @@ function renderPhase1() {
   });
 }
 
-/* ---------- Phase 2: Projects & Experience ---------- */
+
 function renderPhase2() {
   renderProjects();
   renderExperience();
@@ -124,7 +119,7 @@ function renderExperience() {
   const log = document.getElementById('experience-log');
   if (!log) return;
 
-    // Reverse to show most recent first
+    
   [...experience].reverse().forEach(role => {
     const round = document.createElement('div');
     round.className = 'exp-round';
@@ -153,7 +148,7 @@ function renderExperience() {
   });
 }
 
-/* ---------- Phase 3: Contact & Connect ---------- */
+
 function renderPhase3() {
   renderScoresheet();
 }
@@ -177,33 +172,33 @@ function renderScoresheet() {
   });
 }
 
-/* ---------- Tabs ---------- */
+
 function setupTabs() {
   const btns = document.querySelectorAll('.tab-btn');
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tabName = btn.dataset.tab;
       
-      // Update buttons
+      
       btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       
-      // Update contents
+      
       const allContents = document.querySelectorAll('.tab-content');
       allContents.forEach(tc => {
         tc.classList.remove('active');
-        tc.style.display = 'none'; // Force display none for exact certainty
+        tc.style.display = 'none'; 
       });
       
       const target = document.getElementById(`tab-${tabName}`);
       if (target) {
         target.classList.add('active');
-        target.style.display = 'block'; // Force display block
+        target.style.display = 'block'; 
       } else {
         console.error(`Tab target not found: tab-${tabName}`);
       }
 
-      // Reset scroll + update arrows when switching tabs
+      
       const panel2 = document.getElementById('panel-phase-2');
       if (panel2) {
         panel2.scrollTop = 0;
@@ -213,7 +208,7 @@ function setupTabs() {
   });
 }
 
-/* ---------- Scroll Arrow Navigation ---------- */
+
 function setupScrollArrows() {
   const app = document.getElementById('app');
 
@@ -226,20 +221,20 @@ function setupScrollArrows() {
     const panel = document.getElementById(panelId);
     if (!panel) return;
 
-    // Create buttons as #app children (root stacking context → above nav-strip)
+    
     const upBtn   = createArrowBtn('▲', `arrow-up-${phaseId.slice(-1)}`,   'Scroll up');
     const downBtn = createArrowBtn('▼', `arrow-down-${phaseId.slice(-1)}`, 'Scroll down');
     app.appendChild(upBtn);
     app.appendChild(downBtn);
 
-    // Position and show/hide based on panel state
+    
     const updateArrows = () => {
       const { scrollTop, scrollHeight, clientHeight } = panel;
       const canScroll = scrollHeight > clientHeight + 4;
       const atTop    = scrollTop <= 1;
       const atBottom = scrollTop >= scrollHeight - clientHeight - 1;
 
-      // Only show when the phase panel is visible
+      
       const phaseEl = document.getElementById(phaseId);
       const phaseVisible = phaseEl && phaseEl.classList.contains('active');
 
@@ -248,7 +243,7 @@ function setupScrollArrows() {
 
       if (!phaseVisible) return;
 
-      // Anchor buttons to the panel's bounding rect
+      
       const rect = panel.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
 
@@ -262,11 +257,11 @@ function setupScrollArrows() {
     upBtn.addEventListener('click',   () => { panel.scrollBy({ top: -260, behavior: 'smooth' }); });
     downBtn.addEventListener('click', () => { panel.scrollBy({ top:  260, behavior: 'smooth' }); });
 
-    // Keep positions updated on resize
+    
     const ro = new ResizeObserver(updateArrows);
     ro.observe(panel);
 
-    // Expose for tab-switching and phase-activation
+    
     panel._updateArrows = updateArrows;
     setTimeout(updateArrows, 200);
   });
@@ -278,13 +273,13 @@ function createArrowBtn(symbol, id, label) {
   btn.className = 'scroll-arrow hidden';
   btn.setAttribute('aria-label', label);
   btn.textContent = symbol;
-  // Root-level absolute positioning; z-index above everything
+  
   btn.style.cssText = 'position:fixed; transform:translateX(-50%); z-index:150;';
   return btn;
 }
 
 
-/* Watch for phase becoming active → refresh arrows (and reset scroll on leave) */
+
 function observePhaseActivation() {
   [1, 2].forEach(num => {
     const phaseEl = document.getElementById(`phase-${num}`);
@@ -294,11 +289,11 @@ function observePhaseActivation() {
       const panel = document.getElementById(`panel-phase-${num}`);
       if (!panel) return;
       if (phaseEl.classList.contains('active')) {
-        // Delay matches the CSS transition-delay so content is fully visible
+        
         setTimeout(() => { if (panel._updateArrows) panel._updateArrows(); }, 550);
       } else {
-        panel.scrollTop = 0;             // reset for next visit
-        if (panel._updateArrows) panel._updateArrows(); // ← hide arrows immediately
+        panel.scrollTop = 0;             
+        if (panel._updateArrows) panel._updateArrows(); 
       }
     });
 
@@ -306,15 +301,13 @@ function observePhaseActivation() {
   });
 }
 
-/* ---------- Contact Form ---------- */
+
 function setupContactForm() {
-  // Now fully handled by EmailJS script in index.html to ensure UI 
-  // only updates upon successful network response.
+  
+  
 }
 
-/**
- * Apply heatmap data to board squares
- */
+
 export function applyHeatmap(squares) {
   const FILES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
   const RANKS = ['8', '7', '6', '5', '4', '3', '2', '1'];
@@ -332,7 +325,7 @@ export function applyHeatmap(squares) {
 
       sq.classList.add('heatmap-sq');
 
-      // Modulate the base color by contribution intensity
+      
       if (isLight) {
         const g = Math.round(200 - intensity * 80);
         const b = Math.round(180 - intensity * 120);
@@ -344,7 +337,7 @@ export function applyHeatmap(squares) {
         sq.style.backgroundColor = `rgb(${r2}, ${g}, ${b2})`;
       }
 
-      // Add tooltip
+      
       const tooltip = document.createElement('div');
       tooltip.className = 'heatmap-tooltip';
       tooltip.textContent = `Week of ${data.week} — ${data.contributions} contributions`;
@@ -355,9 +348,7 @@ export function applyHeatmap(squares) {
   }
 }
 
-/**
- * Remove heatmap from board squares
- */
+
 export function removeHeatmap(squares) {
   Object.values(squares).forEach(sq => {
     sq.classList.remove('heatmap-sq');

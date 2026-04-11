@@ -1,8 +1,6 @@
-/* ===========================
-   Phase Content Panels
-   =========================== */
 
-/* --- Phase 0: Hero / Pre-Game --- */
+
+
 .phase-0 {
   z-index: var(--z-overlay);
 }
@@ -34,11 +32,11 @@
 .hero-tagline {
   font-family: var(--font-body);
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #f1f5f9; /* brighter */
+  color: #f1f5f9; 
   letter-spacing: 0.04em;
   margin-bottom: var(--sp-md);
-  font-weight: 400; /* slightly stronger */
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); /* KEY FIX */
+  font-weight: 400; 
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); 
 }
 
 .hero-meta {
@@ -54,7 +52,7 @@
   font-size: 1.2rem;
 }
 
-/* Scroll Hint */
+
 .scroll-hint {
   position: absolute;
   bottom: 40px;
@@ -98,17 +96,17 @@
 .scroll-text {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--gold-bright); /* Upgraded from gold-dim for visibility */
+  color: var(--gold-bright); 
   letter-spacing: 0.05em;
 }
 
-/* --- Phase 1: Opening — Right Panel --- */
+
 .phase-1 {
   justify-content: flex-end;
   padding-right: 40px;
 }
 
-/* Outer wrapper: handles sizing + entrance animation */
+
 .panel-outer {
   position: relative;
   width: 42%;
@@ -126,7 +124,7 @@
   transition-delay: 400ms;
 }
 
-/* Inner scrollable panel */
+
 .content-panel {
   width: 100%;
   display: flex;
@@ -143,15 +141,14 @@
   background: rgba(212, 168, 67, 0.25);
   border-radius: 2px;
 }
-/* Hide scrollbar on right-side panel — nav-strip covers it; arrows are the UX */
+
 .right-panel::-webkit-scrollbar { width: 0; }
 .right-panel { scrollbar-width: none; }
 
 
 
-/* === Scroll Arrow Buttons === */
-/* Buttons are injected into #app root by JS (position:fixed via inline style)
-   so they sit in the root stacking context — above nav-strip. */
+
+
 .scroll-arrow {
   width: 30px;
   height: 30px;
@@ -179,7 +176,7 @@
 }
 
 
-/* Cards */
+
 .card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -193,7 +190,7 @@
   border-color: rgba(212, 168, 67, 0.3);
 }
 
-/* Player Card */
+
 .player-card .card-header {
   display: flex;
   gap: var(--sp-lg);
@@ -254,7 +251,7 @@
   padding-left: var(--sp-md);
 }
 
-/* Repertoire Card */
+
 .card-title {
   font-family: var(--font-display);
   font-size: 1.2rem;
@@ -324,7 +321,7 @@
   opacity: 0.7;
 }
 
-/* --- Phase 2: Middlegame — Left Panel --- */
+
 .phase-2 {
   justify-content: flex-start;
   padding-left: 40px;
@@ -343,7 +340,7 @@
 
 
 
-/* Tab Switcher */
+
 .tab-switcher {
   display: flex;
   gap: 2px;
@@ -381,7 +378,7 @@
   display: block;
 }
 
-/* Project Cards Grid */
+
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -473,7 +470,7 @@
   color: var(--gold-bright);
 }
 
-/* Mini board on project card */
+
 .project-mini-board {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -494,7 +491,7 @@
 .project-mini-board .mini-sq.light { background: var(--sq-light); }
 .project-mini-board .mini-sq.dark { background: var(--sq-dark); }
 
-/* Experience Log */
+
 .experience-log {
   display: flex;
   flex-direction: column;
@@ -585,7 +582,7 @@
   width: 20px;
 }
 
-/* --- Phase 3: Endgame --- */
+
 .phase-3 {
   padding: 0;
 }
@@ -615,13 +612,13 @@
   flex-shrink: 0;
 }
 
-/* Only enable pointer events when Phase 3 is actively visible */
+
 .phase-3.active .scoresheet-panel,
 .phase-3.active .contact-panel {
   pointer-events: auto;
 }
 
-/* Scoresheet */
+
 .scoresheet-card {
   font-family: var(--font-mono);
   background: rgba(20, 20, 44, 0.8);
@@ -705,7 +702,7 @@
   font-size: 0.75rem;
 }
 
-/* Contact Form */
+
 .contact-card {
   background: rgba(20, 20, 44, 0.8);
   border: 1px solid rgba(212, 168, 67, 0.2);
@@ -801,12 +798,12 @@
   margin-top: var(--sp-xs);
 }
 
-/* Heatmap overlay — hidden, board handles heatmap directly */
+
 .heatmap-overlay {
   display: none;
 }
 
-/* --- Phase 4: Game Over / Footer --- */
+
 .phase-4 {
   padding: 0;
 }
@@ -874,7 +871,7 @@
   max-width: 340px;
 }
 
-/* Game metadata card */
+
 .gameover-meta {
   width: 100%;
 }
@@ -907,7 +904,7 @@
   font-weight: 500;
 }
 
-/* Sign-off */
+
 .gameover-signoff {
   display: flex;
   flex-direction: column;
@@ -951,7 +948,7 @@
   color: var(--gold-bright);
 }
 
-/* Footer */
+
 .site-footer {
   margin-top: var(--sp-lg);
   padding-top: var(--sp-lg);
@@ -962,18 +959,18 @@
 .site-footer p {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-secondary); /* Made brighter than text-dim */
+  color: var(--text-secondary); 
   margin: 0;
-  line-height: 1.3; /* Reduced line-height so the next line moves up */
+  line-height: 1.3; 
 }
 
 .footer-sub {
   font-style: italic;
-  opacity: 0.9; /* Made brighter */
-  margin-top: 4px; /* Slight spacing if needed, but overall smaller gap */
+  opacity: 0.9; 
+  margin-top: 4px; 
 }
 
-/* --- Responsive --- */
+
 @media (max-width: 1024px) {
   .phase-1, .phase-2 {
     justify-content: center;
@@ -1009,7 +1006,7 @@
   }
 }
 
-/* Prevent panel scroll from bubbling to phase change */
+
 .content-panel {
   overscroll-behavior: contain;
 }

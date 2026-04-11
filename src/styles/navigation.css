@@ -1,6 +1,4 @@
-/* ===========================
-   Navigation Strip
-   =========================== */
+
 
 .nav-strip {
   position: fixed;
@@ -67,7 +65,7 @@
   transform: translateX(0);
 }
 
-/* Connector arrows */
+
 .nav-connector {
   height: 30px;
   display: flex;
@@ -92,7 +90,7 @@
   stroke-dasharray: none;
 }
 
-/* Mobile nav */
+
 @media (max-width: 768px) {
   .nav-strip {
     right: 8px;

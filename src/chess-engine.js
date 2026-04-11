@@ -1,7 +1,4 @@
-/* ===========================
-   Chess Engine — Full algebraic notation parser & board state manager
-   Parses PGN-style notation, tracks board state, returns animation data
-   =========================== */
+
 
 const PIECE_UNICODE = {
   w: { K: '♔', Q: '♕', R: '♖', B: '♗', N: '♘', P: '♙' },
@@ -23,10 +20,10 @@ export class ChessEngine {
     const b = Array.from({ length: 8 }, () => Array(8).fill(null));
     const back = ['R','N','B','Q','K','B','N','R'];
     for (let c = 0; c < 8; c++) {
-      b[0][c] = { type: back[c], color: 'b' }; // rank 8
-      b[1][c] = { type: 'P', color: 'b' };      // rank 7
-      b[6][c] = { type: 'P', color: 'w' };      // rank 2
-      b[7][c] = { type: back[c], color: 'w' }; // rank 1
+      b[0][c] = { type: back[c], color: 'b' }; 
+      b[1][c] = { type: 'P', color: 'b' };      
+      b[6][c] = { type: 'P', color: 'w' };      
+      b[7][c] = { type: back[c], color: 'w' }; 
     }
     return b;
   }
@@ -49,7 +46,7 @@ export class ChessEngine {
     this.board[r][c] = piece;
   }
 
-  /* --- Notation Parser --- */
+  
   _parseAlgebraic(moveStr) {
     moveStr = moveStr.replace(/[+#!?]/g, '');
     if (moveStr === 'O-O') return { castle: 'king' };
@@ -65,7 +62,7 @@ export class ChessEngine {
     const isCapture = moveStr.includes('x');
     moveStr = moveStr.replace('x', '');
 
-    // Target square is always the last 2 chars
+    
     const toRank = moveStr[moveStr.length - 1];
     const toFile = moveStr[moveStr.length - 2];
     const prefix = moveStr.slice(0, -2);
@@ -92,7 +89,7 @@ export class ChessEngine {
     return { pieceType, disambigFile, disambigRank, isCapture, toSquare: toFile + toRank, promotion };
   }
 
-  /* --- Move Execution --- */
+  
   executeMove(moveStr) {
     const parsed = this._parseAlgebraic(moveStr);
     let result;
@@ -150,7 +147,7 @@ export class ChessEngine {
       capturedChar = PIECE_UNICODE[target.color][target.type];
       capturedColor = target.color === 'w' ? 'white' : 'black';
     } else if (pieceType === 'P' && parsed.isCapture) {
-      // En passant
+      
       if (this.enPassantSquare === toSquare) {
         const { r, c } = this._sqToRC(toSquare);
         const epRow = color === 'w' ? r + 1 : r - 1;
@@ -171,7 +168,7 @@ export class ChessEngine {
       this._set(toSquare, piece);
     }
 
-    // En passant tracking
+    
     if (pieceType === 'P') {
       const fr = this._sqToRC(from);
       const tr = this._sqToRC(toSquare);
@@ -194,7 +191,7 @@ export class ChessEngine {
     };
   }
 
-  /* --- Source Square Finder --- */
+  
   _findSource(pieceType, color, toSquare, disambigFile, disambigRank) {
     const to = this._sqToRC(toSquare);
     for (let r = 0; r < 8; r++) {
@@ -246,7 +243,7 @@ export class ChessEngine {
     return true;
   }
 
-  /* --- Board Snapshot --- */
+  
   getPositionArray() {
     const pieces = [];
     for (let r = 0; r < 8; r++) {
@@ -265,7 +262,7 @@ export class ChessEngine {
   }
 }
 
-/* --- Notation String Parser --- */
+
 export function parseNotation(notation) {
   return notation.trim().split(/\s+/).filter(t => !/^\d+\.$/.test(t));
 }

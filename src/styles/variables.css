@@ -1,50 +1,48 @@
-/* ===========================
-   CSS Design Tokens
-   =========================== */
+
 :root {
-  /* Board Colors */
+  
   --sq-light: #e8dcc8;
   --sq-dark: #8b6f47;
   --sq-light-active: #f0e6d2;
   --sq-dark-active: #9a7d55;
 
-  /* Neutral / Backgrounds */
-  --bg-deep: #0e0e1a;  /* Lightened slightly for better visibility */
+  
+  --bg-deep: #0e0e1a;  
   --bg-surface: #141424;
   --bg-panel: rgba(15, 15, 22, 0.7);
   --bg-card: rgba(22, 22, 32, 0.5);
   
-  /* Primary Glow Colors */
-  --glow-indigo: rgba(80, 80, 180, 0.25); /* Increased glow intensity */
-  --glow-gold: rgba(212, 168, 67, 0.15); /* Increased glow intensity */
+  
+  --glow-indigo: rgba(80, 80, 180, 0.25); 
+  --glow-gold: rgba(212, 168, 67, 0.15); 
   --bg-glass: rgba(20, 20, 44, 0.65);
 
-  /* Accent */
+  
   --gold: #d4a843;
   --gold-dim: #b8922e;
   --gold-glow: rgba(212, 168, 67, 0.3);
   --gold-bright: #f0c95c;
 
-  /* Text */
+  
   --text-primary: #f0ece4;
   --text-secondary: #a8a0b8;
   --text-dim: #6b6380;
   --text-accent: var(--gold);
 
-  /* Semantic */
+  
   --success: #4caf50;
   --danger: #e57373;
 
-  /* Typography */
+  
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Sizing */
+  
   --board-size: min(55vw, 55vh);
   --board-size-sm: min(40vw, 40vh);
 
-  /* Spacing */
+  
   --sp-xs: 0.25rem;
   --sp-sm: 0.5rem;
   --sp-md: 1rem;
@@ -52,25 +50,25 @@
   --sp-xl: 2rem;
   --sp-2xl: 3rem;
 
-  /* Transitions */
+  
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
   --duration-phase: 1200ms;
   --duration-content: 800ms;
 
-  /* Borders & Shadows */
+  
   --border-subtle: 1px solid rgba(212, 168, 67, 0.15);
   --border-gold: 1px solid rgba(212, 168, 67, 0.4);
   --shadow-board: 0 25px 80px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.4);
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 30px var(--gold-glow);
 
-  /* Glass */
+  
   --glass-blur: blur(20px);
   --glass-bg: rgba(20, 20, 44, 0.7);
 
-  /* Z-index layers */
+  
   --z-board: 1;
   --z-content: 10;
   --z-nav: 50;

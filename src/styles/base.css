@@ -1,6 +1,4 @@
-/* ===========================
-   Base Styles & Reset
-   =========================== */
+
 
 *, *::before, *::after {
   margin: 0;
@@ -27,31 +25,31 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  /* Translucent glow effects on top of everything */
+  
   background-image: 
     radial-gradient(ellipse at 20% 50%, rgba(212, 168, 67, 0.1) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(100, 80, 160, 0.12) 0%, transparent 50%);
-  pointer-events: none; /* Let clicks pass to the board/content */
+  pointer-events: none; 
 }
-/* Ensure base interactive elements work, without overriding phase visibility blocks */
+
 #sound-toggle, #board-wrapper, #nav-strip {
   pointer-events: auto; 
 }
 
-/* Dedicated Fixed Background Layer (Primary Image - Backing Only) */
+
 .fixed-bg {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.1; /* Almost entirely backing */
+  opacity: 0.1; 
   filter: grayscale(1) brightness(0.2);
   z-index: -4;
   pointer-events: none;
 }
 
-/* Cinematic Background Decoration Layer */
+
 .bg-decor {
   position: fixed;
   inset: 0;
@@ -60,14 +58,14 @@ html, body {
   z-index: -3;
   overflow: hidden;
   pointer-events: none;
-  /* Deep Midnight Onyx Mesh Gradient */
+  
   background: 
     radial-gradient(ellipse at 80% 20%, rgba(31, 31, 64, 0.4) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 80%, rgba(58, 58, 128, 0.15) 0%, transparent 50%),
     var(--bg-deep);
 }
 
-/* 1. Large-scale Blueprint Grid */
+
 .bg-grid {
   position: absolute;
   inset: -100px;
@@ -79,13 +77,13 @@ html, body {
   z-index: 1;
 }
 
-/* 2. Ghost Chess Pieces (Silhouettes) */
+
 .bg-piece {
   position: absolute;
   font-size: 40rem;
   font-family: serif;
   color: var(--gold);
-  opacity: 0.1; /* Significantly increased for visibility */
+  opacity: 0.1; 
   line-height: 1;
   filter: blur(4px);
   user-select: none;
@@ -95,7 +93,7 @@ html, body {
 .k-ghost { top: -10%; right: -5%; transform: rotate(15deg); animation-delay: -5s; }
 .n-ghost { bottom: -5%; left: -10%; transform: rotate(-15deg); font-size: 30rem; animation-delay: -25s; }
 
-/* 3. Floating Move Notations */
+
 .bg-moves {
   position: absolute;
   width: 200%;
@@ -112,7 +110,7 @@ html, body {
   z-index: 2;
 }
 
-/* 4. Ambient Focal Glow (Centered on board area) */
+
 .bg-glow {
   position: absolute;
   width: 140vw;
@@ -124,7 +122,7 @@ html, body {
   z-index: 0;
 }
 
-/* 5. Particle Dust System */
+
 .bg-dust {
   position: absolute;
   inset: 0;
@@ -141,7 +139,7 @@ html, body {
   animation: dust-drift 40s linear infinite;
 }
 
-/* 6. Volumetric Fog & Light Rays */
+
 .bg-fog {
   position: absolute;
   inset: -20%;
@@ -162,21 +160,21 @@ html, body {
   animation: rays-drift 60s ease-in-out infinite alternate;
 }
 
-/* Selection */
 
-/* Selection */
+
+
 ::selection {
   background: var(--gold);
   color: var(--bg-deep);
 }
 
-/* Scrollbar hidden globally */
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-/* Links */
+
 a {
   color: var(--gold);
   text-decoration: none;
@@ -186,7 +184,7 @@ a:hover {
   color: var(--gold-bright);
 }
 
-/* Sound Toggle */
+
 .sound-toggle {
   position: fixed;
   top: var(--sp-lg);
@@ -215,7 +213,7 @@ a:hover {
 .sound-toggle.active .sound-off { display: none; }
 .sound-toggle.active .sound-on { display: inline; }
 
-/* Phase Content Containers */
+
 .phase-content {
   position: absolute;
   inset: 0;
@@ -235,7 +233,7 @@ a:hover {
   pointer-events: auto;
 }
 
-/* Move Notation Flash */
+
 .move-notation {
   position: absolute;
   top: var(--sp-xl);
