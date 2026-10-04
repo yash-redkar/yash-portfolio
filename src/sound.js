@@ -33,13 +33,17 @@ class SoundPool {
 }
 
 
+
+const base = import.meta.env.BASE_URL;
+
 const pools = {
-  move: new SoundPool("/sounds/Move.mp3", 8),
-  capture: new SoundPool("/sounds/Capture.mp3", 5),
-  check: new SoundPool("/sounds/Check.mp3", 2),
-  gameEnd: new SoundPool("/sounds/Victory.mp3", 1),
-  vanish: new SoundPool("/sounds/Draw.mp3", 1),
+  move: new SoundPool(`${base}sounds/Move.mp3`, 8),
+  capture: new SoundPool(`${base}sounds/Capture.mp3`, 5),
+  check: new SoundPool(`${base}sounds/Check.mp3`, 2),
+  gameEnd: new SoundPool(`${base}sounds/Victory.mp3`, 1),
+  vanish: new SoundPool(`${base}sounds/Draw.mp3`, 1),
 };
+
 
 
 export function toggleSound() {
