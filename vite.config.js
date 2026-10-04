@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ command, mode }) => ({
   root: ".",
-  base: "/yash-portfolio/",
+  base: mode === "github-pages" ? "/yash-portfolio/" : "/",
   publicDir: "public",
   build: {
     outDir: "dist",
@@ -11,4 +11,4 @@ export default defineConfig({
     port: 3002,
     open: true,
   },
-});
+}));
