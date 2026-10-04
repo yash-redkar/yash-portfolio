@@ -1,10 +1,11 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: '.',
-  publicDir: 'public',
+  root: ".",
+  base: "/yash-portfolio/",
+  publicDir: "public",
   build: {
-    outDir: 'dist',
+    outDir: "dist",
   },
   server: {
     port: 3002,
